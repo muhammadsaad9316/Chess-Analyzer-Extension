@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Chess Analyzer",
+  "version": "1.0.0",
+  "description": "Analyze chess positions and display best moves with arrows",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsi63RtahgC2oif5R6GwxZeOrH8h4E7T7QI/BQPuzpTGsoetKyuT2cGCSqYbAxfmg4p7NsdtfOJ75DAHfSFjjviM84DdVapCEU3RVptOfNiwe9gPQlY0hJJBb0Lk9Xt5f1ebauhjWB+7bAb63TCfcH7j2qIXZGkhZykzES0zU6JzB8V7UVwzSLt/n0gwtHLnSTHWGvqHmWePoyNwE29aIAlEASWiVkeV2evdH7zNmXa1O10OSziI7zg2nO66LV3j/CiqnOzxZqdqed5FXQEdiqSci4k+Z9uokufjSS3oe/fkNHd9NgqHr70GDQ/5Fnx2Fu6XC56qnUDgutyAbJu1WLQIDAQAB",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "https://www.chess.com/*",
+    "https://lichess.org/*",
+    "http://localhost:5000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.chess.com/*",
+        "https://lichess.org/*"
+      ],
+      "js": [
+        "content/state.js",
+        "content/boardDetector.js",
+        "content/arrowRenderer.js",
+        "content/fenBuilder.js",
+        "content/analyzer.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.chess.com/*",
+        "https://lichess.org/*"
+      ],
+      "js": [
+        "injected.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

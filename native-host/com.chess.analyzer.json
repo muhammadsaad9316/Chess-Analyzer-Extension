@@ -1,0 +1,9 @@
+{
+    "name": "com.chess.analyzer",
+    "description": "Chess Analyzer Native Host",
+    "path": "PLACEHOLDER_WILL_BE_SET_BY_INSTALLER",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://mgccpneeplghkffefnmoihnhhpdfjnke/"
+    ]
+}

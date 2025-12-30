@@ -1,0 +1,15 @@
+/* Chess Analyzer - Content Script Styles */
+
+#chess-analyzer-overlay {
+    pointer-events: none !important;
+    z-index: 99999 !important;
+}
+
+#chess-analyzer-overlay svg {
+    overflow: visible;
+}
+
+/* Arrow glow effect */
+#chess-analyzer-overlay line {
+    filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.5));
+}
